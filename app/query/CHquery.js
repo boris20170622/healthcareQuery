@@ -166,6 +166,46 @@ $(document).ready(function () {
         }
     });
 
+    $("input[name='answer5'][value='n']").change(function(){
+        if(this.checked){
+            $("#relationship").val("");
+            $("#relationship").attr("disabled",true);
+            $("#contactDate").val("");
+            $("#contactDate").attr("disabled",true);
+        }
+    });
+
+    $("input[name='answer5'][value='y']").change(function(){
+        if(this.checked){
+            $("#relationship").attr("disabled",false);
+            $("#contactDate").attr("disabled",false);
+        }
+    });
+
+    $("input[name='answer6'][value='n']").change(function(){
+        if(this.checked){
+            $("#managementDateStart").val("");
+            $("#managementDateStart").attr("disabled",true);
+            $("#managementDateEnd").val("");
+            $("#managementDateEnd").attr("disabled",true);
+            $("input[name='managementType']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+        }
+    });
+
+    $("input[name='answer6'][value='y']").change(function(){
+        if(this.checked){
+            $("#managementDateStart").attr("disabled",false);
+            $("#managementDateEnd").attr("disabled",false);
+            $("input[name='managementType']").each(function(){
+                $(this).attr("disabled",false);
+            });
+        }
+    });
+
+
 });
 
 function ckeckPersonalData(){
@@ -201,10 +241,13 @@ function ckeckPersonalData(){
         alert("請填入手機");
     } else if(email == ""){
         alert("電子信箱");
+    } else{
+        return true;
     }
+    return false;
 }
 
-function checkquerydate(){
+function checkQueryDate(){
     var answer1 = $("input[name='answer1']:checked").val();
     var enteredFrom = $("#enteredFrom").val();
     var transitFrom = $("#transitFrom").val();
@@ -213,13 +256,18 @@ function checkquerydate(){
     var answer3 = $("input[name='answer3']:checked").val();
     var answer3Other = $("#answer3Other").val();
     var answer4 = $("input[name='answer4']:checked").val();
-
+    var answer5 = $("input[name='answer5']:checked").val();
+    var answer6 = $("input[name='answer6']:checked").val();
     
     if(answer1 == undefined){
         alert("請填選第一題");
-    }else if(answer1 == "y"){
+        return false;
+    }
+
+    if(answer1 == "y"){
         if((enteredFrom == "" || enteredDate == "")&&(transitFrom == "" || transitDate == "")){
             alert("請至少填選第二題中的一個小題，並確認有選擇日期");
+            return false;
         } else if(enteredFrom == "" || enteredDate == ""){
             $("#enteredFrom").val("");
             $("#enteredDate").val("");
@@ -227,14 +275,19 @@ function checkquerydate(){
             $("#transitFrom").val("");
             $("#transitDate").val("");
         }
-    } else if(answer3 == undefined){
+    }
+    if(answer3 == undefined){
         alert("請填選第三題，須至少選擇一個選項");
+        return false;
     } else if($("input[name='answer3'][value='checkbox9']").prop('checked')){
         if(answer3Other == ""){
             alert("如在第三題有勾選其他，請在後面填入文字");
+            return false;
         }
-    } else if(answer4 == undefined){
+    }
+    if(answer4 == undefined){
         alert("請填選第四題");
+        return false;
     } else if(answer4 == 'y'){
         var screen=[];
         $("input[name='screen']:checked").each(function(){
@@ -242,29 +295,38 @@ function checkquerydate(){
         });
         if(screen.length == 0){
             alert("請於至少點選第四題中的其中一種篩檢");
+            return false;
         }else if(screen.length == 1 && screen[0] == "flu"){
             var fluScreenResult = $("input[name='fluScreenResult']:checked").val();
             var fluScreenDate = $("#fluScreenDate").val();
             if(fluScreenDate == ""){
                 alert("請選取流感快篩的篩檢日期");
+                return false;
             } else if(fluScreenResult == undefined){
                 alert("請點選流感快篩結果");
+                return false;
             } else if(fluScreenResult == 'other' && $("#fluScreenResultOther").val() == ""){
                 alert("請瑱入流感快篩結果的其他欄位");
+                return false;
             } else if($("#hospital").val() == ""){
                 alert("請瑱入篩檢醫院名稱");
+                return false;
             }
         }else if(screen.length == 1 && screen[0] == "covid19"){
             var covid19ScreenResult = $("input[name='covid19ScreenResult']:checked").val();
             var covid19ScreenDate = $("#covid19ScreenDate").val();
             if(covid19ScreenDate == ""){
                 alert("請選取新冠肺炎喉頭採驗的篩檢日期");
+                return false;
             } else if(covid19ScreenResult == undefined){
                 alert("請點選新冠肺炎喉頭採驗結果");
+                return false;
             } else if(covid19ScreenResult == 'other' && $("#covid19ScreenResultOther").val() == ""){
                 alert("請瑱入新冠肺炎喉頭採驗結果的其他欄位");
+                return false;
             } else if($("#hospital").val() == ""){
                 alert("請瑱入篩檢醫院名稱");
+                return false;
             }
         }else {
             var fluScreenResult = $("input[name='fluScreenResult']:checked").val();
@@ -273,16 +335,56 @@ function checkquerydate(){
             var covid19ScreenDate = $("#covid19ScreenDate").val();
             if(fluScreenDate == "" || covid19ScreenDate == ""){
                 alert("請選取流感快篩或新冠肺炎喉頭採驗的篩檢日期");
+                return false;
             } else if(fluScreenResult == undefined || covid19ScreenResult == undefined){
                 alert("請點選流感快篩或新冠肺炎喉頭採驗結果");
+                return false;
             } else if((fluScreenResult == 'other' && $("#fluScreenResultOther").val() == "") || (covid19ScreenResult == 'other' && $("#covid19ScreenResultOther").val() == "")){
                 alert("請瑱入流感快篩結果或新冠肺炎喉頭採驗的其他欄位");
+                return false;
             } else if($("#hospital").val() == ""){
                 alert("請瑱入篩檢醫院名稱");
+                return false;
             }
         }
-    } 
+    }
+    if(answer5 == undefined){
+        alert("請填選第五題");
+        return false;
+    } else if(answer5 == 'y'){
+        if($("#relationship").val() == ""){
+            alert("請在第五題中填入家屬關係或本人");
+            return false;
+        }else if($("#contactDate").val() == ""){
+            alert("請在第五題中填入與病患接觸日期");
+            return false;
+        }
+    }
+    if(answer6 == undefined){
+        alert("請填選第六題");
+        return false;
+    } else if(answer6 == 'y'){
+        var managementType = $("input[name='managementType']:checked").val();
+        if(managementType == undefined){
+            alert("請在第六題中選擇管理方式");
+            return false;
+        }else if($("#managementDateStart").val() == ""){
+            alert("請在第六題中填入管理起始日期");
+            return false;
+        }else if($("#managementDateEnd").val() == ""){
+            alert("請在第六題中填入管理結束日期");
+            return false;
+        }else if($("#managementDateStart").val()>$("#managementDateEnd").val()){
+            alert("在第六題中，管理結束日期不可早於管理起始日期");
+            return false;
+        }
+    }
+}
 
+function checkAndSave(){
+    if(ckeckPersonalData() && checkQueryDate){
+        
+    }
 }
 
 
