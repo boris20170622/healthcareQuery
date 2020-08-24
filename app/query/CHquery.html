@@ -6,8 +6,33 @@
 </head>
 <body>
 <div id = "personalDate">
-    <span>姓名:</span><input id="name"  type="text"><span>出生:</span><input id="name"  type="date">
-
+    <span>姓名:</span><input id="name"  type="text">
+    <span>出生:</span><input id="birthday"  type="date">
+    <span>性別:</span><input name="sex" value="m" type="radio"><span>男</span><input name="genders" value="f" type="radio"><span>女</span><br/>
+    <span>本校邀請系所/單位：:</span><input id="invitedUnit"  type="text"><br/>
+    <span>校外單位/公司名稱:</span><input id="offCampusUnit"  type="text"><br/>
+    <span>前來本校參與之活動(公務)名稱:</span><input id="event"  type="text"><br/>
+    <span>於本校參與活動(公務)期程:</span><input id="evenDateStart"  type="date">至<input id="evenDateEnd"  type="date"><br/>
+    <span>手機:</span><input id="phone"  type="tel">
+    <span>電子信箱:</span><input id="email"  type="email">
+</div>
+<br/>
+<div id = "question">
+    <div id="question1">1. 請問您 2020 年是否自其他國家入境台灣?<br/><input name="answer1" value="n" type="radio"><span>否</span><input name="answer1" value="y" type="radio"><span>是，請續填第 2 題</span></div>
+    <div id="question2">2. 入境台灣相關問題(包含過境、轉機):<br/>
+        <span>(1)自</span><input id="enteredFrom"  type="text"><span>(國家)入境台灣，日期：</span><input id="enteredDate"  type="date"><br/>
+        <span>(2)自</span><input id="transitFrom"  type="text"><span>(國家)過境，日期：</span><input id="transitDate"  type="date">
+    </div>
+    <div id="question3">3. 最近 14 天內是否出現以下症狀：(無則免填)<br/>
+        <input name="answer3" value="checkbox1" type="checkbox"><span>發燒(>38℃) </span>
+        <input name="answer3" value="checkbox2" type="checkbox"><span>咳嗽、喉嚨痛、流鼻水</span>
+        <input name="answer3" value="checkbox4" type="checkbox"><span>腹瀉</span>
+        <input name="answer3" value="checkbox5" type="checkbox"><span>呼吸道窘迫症狀(呼吸急促或困難)</span>
+        <input name="answer3" value="checkbox6" type="checkbox"><span>嗅覺或味覺喪失</span>
+        <input name="answer3" value="checkbox7" type="checkbox"><span>關節酸痛</span>
+        <input name="answer3" value="checkbox8" type="checkbox"><span>肌肉酸痛</span>
+        <span>其他</span><input id="answer3Other" type="text">
+    </div>
 </div>
 </body>
 </html>
