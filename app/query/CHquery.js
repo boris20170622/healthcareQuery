@@ -1,3 +1,173 @@
+$(document).ready(function () {
+    $("#answer3Other").attr("disabled",true);
+    $("#fluScreenDate").attr("disabled",true);
+    $("#fluScreenResultOther").attr("disabled",true);
+    $("#covid19ScreenDate").attr("disabled",true);
+    $("#covid19ScreenResultOther").attr("disabled",true);
+    $("#hospital").attr("disabled",true);
+    $("input[name='fluScreenResult']").each(function(){
+        $(this).attr("disabled",true);
+    });
+    $("input[name='covid19ScreenResult']").each(function(){
+        $(this).attr("disabled",true);
+    });
+
+   
+    $("input[name='answer1'][value='n']").change(function() {
+        if(this.checked){
+            $("#enteredFrom").val("");
+            $("#enteredDate").val("");
+            $("#transitFrom").val("");
+            $("#transitDate").val("");
+            $("#enteredFrom").attr("disabled",true);
+            $("#transitFrom").attr("disabled",true);
+            $("#enteredDate").attr("disabled",true);
+            $("#transitDate").attr("disabled",true);
+        }
+    }); 
+
+    $("input[name='answer1'][value='y']").change(function() {
+        if(this.checked){
+            $("#enteredFrom").attr("disabled",false);
+            $("#transitFrom").attr("disabled",false);
+            $("#enteredDate").attr("disabled",false);
+            $("#transitDate").attr("disabled",false);
+        }
+    });
+
+    $("input[name='answer3'][value='checkbox1']").change(function() {
+        if(this.checked){
+            $("input[name='answer3']").each(function(){
+                    if($(this).val() != "checkbox1"){
+                        $(this).prop("checked",false);
+                        $(this).attr("disabled",true);
+                    }
+            })
+            $("#answer3Other").val("");
+            $("#answer3Other").attr("disabled",true);
+        }else {
+            $("input[name='answer3']").each(function(){
+                if($(this).val() != "checkbox1"){
+                    $(this).attr("disabled",false);
+                }
+            })
+        }
+    });
+
+    $("input[name='answer3'][value='checkbox9']").change(function(){
+        if(this.checked){
+            $("#answer3Other").attr("disabled",false);
+        }else {
+            $("#answer3Other").val("");
+            $("#answer3Other").attr("disabled",true);
+        }
+    });
+
+    $("input[name='answer4'][value='n']").change(function() {
+        if(this.checked){
+            $("#answer3Other").val("");
+            $("#answer3Other").attr("disabled",true);
+            $("#fluScreenDate").val("");
+            $("#fluScreenDate").attr("disabled",true);
+            $("#fluScreenResultOther").val("");
+            $("#fluScreenResultOther").attr("disabled",true);
+            $("#covid19ScreenDate").val("");
+            $("#covid19ScreenDate").attr("disabled",true);
+            $("#covid19ScreenResultOther").val("");
+            $("#covid19ScreenResultOther").attr("disabled",true);
+            $("#hospital").val("");
+            $("#hospital").attr("disabled",true);
+            $("input[name='screen']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+            $("input[name='fluScreenResult']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+            $("input[name='covid19ScreenResult']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+        }
+    });
+
+    $("input[name='answer4'][value='y']").change(function() {
+        if(this.checked){
+            $("input[name='screen']").each(function(){
+                $(this).attr("disabled",false);
+            });
+        }
+    });
+
+    $("input[name='screen'][value='flu']").change(function(){
+        if(this.checked){
+            $("#fluScreenDate").attr("disabled",false);
+            $("input[name='fluScreenResult']").each(function(){
+                $(this).attr("disabled",false);
+            });
+        } else{
+            $("#fluScreenDate").val("");
+            $("#fluScreenDate").attr("disabled",true);
+            $("#fluScreenResultOther").val("");
+            $("#fluScreenResultOther").attr("disabled",true);
+            $("input[name='fluScreenResult']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+        }
+        if(this.checked || $("input[name='screen'][value='covid19']").prop('checked')){
+            $("#hospital").attr("disabled",false);
+        } else{
+            $("#hospital").val("");
+            $("#hospital").attr("disabled",true);
+        }
+    });
+
+    $("input[name='fluScreenResult']").change(function(){
+        if($("input[name='fluScreenResult'][value='other']").prop('checked')){
+            $("#fluScreenResultOther").attr("disabled",false);
+        }else {
+            $("#fluScreenResultOther").val("");
+            $("#fluScreenResultOther").attr("disabled",true);
+        }
+    });
+
+    $("input[name='screen'][value='covid19']").change(function(){
+        if(this.checked){
+            $("#covid19ScreenDate").attr("disabled",false);
+            $("input[name='covid19ScreenResult']").each(function(){
+                $(this).attr("disabled",false);
+            });
+        } else{
+            $("#covid19ScreenDate").val("");
+            $("#covid19ScreenDate").attr("disabled",true);
+            $("#covid19ScreenResultOther").val("");
+            $("#covid19ScreenResultOther").attr("disabled",true);
+            $("input[name='covid19ScreenResult']").each(function(){
+                $(this).prop("checked",false);
+                $(this).attr("disabled",true);
+            });
+        }
+        if(this.checked || $("input[name='screen'][value='covid19']").prop('checked')){
+            $("#hospital").attr("disabled",false);
+        } else{
+            $("#hospital").val("");
+            $("#hospital").attr("disabled",true);
+        }
+    });
+
+    $("input[name='covid19ScreenResult']").change(function(){
+        if($("input[name='covid19ScreenResult'][value='other']").prop('checked')){
+            $("#covid19ScreenResultOther").attr("disabled",false);
+        }else {
+            $("#covid19ScreenResultOther").val("");
+            $("#covid19ScreenResultOther").attr("disabled",true);
+        }
+    });
+
+});
+
 function ckeckPersonalData(){
     var name = $('#name').val();
     var birthday = $('#birthday').val();
@@ -40,7 +210,11 @@ function checkquerydate(){
     var transitFrom = $("#transitFrom").val();
     var enteredDate = $("#enteredDate").val();
     var transitDate = $("#transitDate").val();
+    var answer3 = $("input[name='answer3']:checked").val();
+    var answer3Other = $("#answer3Other").val();
+    var answer4 = $("input[name='answer4']:checked").val();
 
+    
     if(answer1 == undefined){
         alert("請填選第一題");
     }else if(answer1 == "y"){
@@ -53,10 +227,62 @@ function checkquerydate(){
             $("#transitFrom").val("");
             $("#transitDate").val("");
         }
-    }
+    } else if(answer3 == undefined){
+        alert("請填選第三題，須至少選擇一個選項");
+    } else if($("input[name='answer3'][value='checkbox9']").prop('checked')){
+        if(answer3Other == ""){
+            alert("如在第三題有勾選其他，請在後面填入文字");
+        }
+    } else if(answer4 == undefined){
+        alert("請填選第四題");
+    } else if(answer4 == 'y'){
+        var screen=[];
+        $("input[name='screen']:checked").each(function(){
+            screen.push($(this).val());
+        });
+        if(screen.length == 0){
+            alert("請於至少點選第四題中的其中一種篩檢");
+        }else if(screen.length == 1 && screen[0] == "flu"){
+            var fluScreenResult = $("input[name='fluScreenResult']:checked").val();
+            var fluScreenDate = $("#fluScreenDate").val();
+            if(fluScreenDate == ""){
+                alert("請選取流感快篩的篩檢日期");
+            } else if(fluScreenResult == undefined){
+                alert("請點選流感快篩結果");
+            } else if(fluScreenResult == 'other' && $("#fluScreenResultOther").val() == ""){
+                alert("請瑱入流感快篩結果的其他欄位");
+            } else if($("#hospital").val() == ""){
+                alert("請瑱入篩檢醫院名稱");
+            }
+        }else if(screen.length == 1 && screen[0] == "covid19"){
+            var covid19ScreenResult = $("input[name='covid19ScreenResult']:checked").val();
+            var covid19ScreenDate = $("#covid19ScreenDate").val();
+            if(covid19ScreenDate == ""){
+                alert("請選取新冠肺炎喉頭採驗的篩檢日期");
+            } else if(covid19ScreenResult == undefined){
+                alert("請點選新冠肺炎喉頭採驗結果");
+            } else if(covid19ScreenResult == 'other' && $("#covid19ScreenResultOther").val() == ""){
+                alert("請瑱入新冠肺炎喉頭採驗結果的其他欄位");
+            } else if($("#hospital").val() == ""){
+                alert("請瑱入篩檢醫院名稱");
+            }
+        }else {
+            var fluScreenResult = $("input[name='fluScreenResult']:checked").val();
+            var fluScreenDate = $("#fluScreenDate").val();
+            var covid19ScreenResult = $("input[name='covid19ScreenResult']:checked").val();
+            var covid19ScreenDate = $("#covid19ScreenDate").val();
+            if(fluScreenDate == "" || covid19ScreenDate == ""){
+                alert("請選取流感快篩或新冠肺炎喉頭採驗的篩檢日期");
+            } else if(fluScreenResult == undefined || covid19ScreenResult == undefined){
+                alert("請點選流感快篩或新冠肺炎喉頭採驗結果");
+            } else if((fluScreenResult == 'other' && $("#fluScreenResultOther").val() == "") || (covid19ScreenResult == 'other' && $("#covid19ScreenResultOther").val() == "")){
+                alert("請瑱入流感快篩結果或新冠肺炎喉頭採驗的其他欄位");
+            } else if($("#hospital").val() == ""){
+                alert("請瑱入篩檢醫院名稱");
+            }
+        }
+    } 
 
 }
 
-function getValueOfCheckbox(name){
 
-}
