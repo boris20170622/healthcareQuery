@@ -19,10 +19,12 @@
 <br/>
 <div id = "question">
     <div id="question1">1. 請問您 2020 年是否自其他國家入境台灣?<br/><input name="answer1" value="n" type="radio"><span>否</span><input name="answer1" value="y" type="radio"><span>是，請續填第 2 題</span></div>
+    <br/>
     <div id="question2">2. 入境台灣相關問題(包含過境、轉機):<br/>
         <span>(1)自</span><input id="enteredFrom"  type="text"><span>(國家)入境台灣，日期：</span><input id="enteredDate"  type="date"><br/>
         <span>(2)自</span><input id="transitFrom"  type="text"><span>(國家)過境，日期：</span><input id="transitDate"  type="date">
     </div>
+    <br/>
     <div id="question3">3. 最近 14 天內是否出現以下症狀：(無則免填)<br/>
         <input name="answer3" value="checkbox1" type="checkbox"><span>發燒(>38℃) </span>
         <input name="answer3" value="checkbox2" type="checkbox"><span>咳嗽、喉嚨痛、流鼻水</span>
@@ -31,8 +33,37 @@
         <input name="answer3" value="checkbox6" type="checkbox"><span>嗅覺或味覺喪失</span>
         <input name="answer3" value="checkbox7" type="checkbox"><span>關節酸痛</span>
         <input name="answer3" value="checkbox8" type="checkbox"><span>肌肉酸痛</span>
-        <span>其他</span><input id="answer3Other" type="text">
+        <input name="answer3" value="checkbox9" type="checkbox"><span>其他</span><input id="answer3Other" type="text">
+    </div>
+    <br/>
+    <div id="question4">4. 您是否做過「流感快篩」或是「新冠肺炎喉頭採驗」？<br/>
+        <input name="answer4" value="n" type="radio"><span>否</span>
+        <input name="answer4" value="y" type="radio"><span>是，篩檢項目：</span><br/>
+        <input name="screen" value="flu" type="checkbox"><span>流感快篩；篩檢日期：</span><input id="fluScreenDate"  type="date"><br/>
+        <span>篩檢結果：</span><input name="fluScreenResult" value="negative" type="radio"><span>陰性</span><input name="fluScreenResult" value="positive" type="radio"><span>陽性</span><input name="fluScreenResult" value="other" type="radio"><span>其他</span><input id="fluScreenResultOther" type="text"><br/>
+        <input name="screen" value="covid19" type="checkbox"><span>新冠肺炎喉頭採驗；篩檢日期：</span><input id="covid19ScreenDate"  type="date"><br/>
+        <span>篩檢結果：</span><input name="covid19ScreenResult" value="negative" type="radio"><span>陰性</span><input name="covid19ScreenResult" value="positive" type="radio"><span>陽性</span><input name="covid19ScreenResult" value="other" type="radio"><span>其他</span><input id="covid19ScreenResultOther" type="text"><br/>
+        <span>篩檢醫院名稱：</span><input id="hospital" type="text">
+    </div>
+    <br/>
+    <div id="question5">5. 您或您家屬是否曾與感染嚴重特殊傳染性肺炎病患有接觸？<br/>
+        <input name="answer5" value="n" type="radio"><span>否</span>
+        <input name="answer5" value="y" type="radio"><span>是，與您的關係是</span><input id="relationship" type="text"><span>，與病患接觸日期</span><input id="contactDate" type="date">
+    </div>
+    <br/>
+    <div id="question6">6. 您是否為衛生主管機關列管之武漢肺炎居家檢疫或自我健康管理個案?<br/>
+        <input name="answer6" value="n" type="radio"><span>否</span>
+        <input name="answer6" value="y" type="radio"><span>是，管理方式：</span><input name="managementType" value="isolation" type="checkbox"><span>居家隔離</span><input name="managementType" value="quarantine" type="checkbox"><span>居家檢疫</span><input name="managementType" value="isolation" type="checkbox"><span>自我健康管理</span><br/>
+        <span>管理日期為</span><input id="managementDateStart" type="date">至<input id="managementDateEnd" type="date">
     </div>
 </div>
+<div id="CHnote">
+    請詳細閱讀注意事項，於本校活動期間配合以下防疫措施：<br/>
+    <p>1. 自 109 年 4 月 20 日起，請上網填寫「國立中正大學校園嚴重特殊傳染性肺炎健康關懷問卷」，並將問卷回條(電子郵件)列印後交給本校邀請單位留存或轉寄給邀請單位存查，無法完成上述方法者才得使用本單。</p>
+    <p>2. 落實發燒不入校。請戴口罩進入校園，進入校園及各棟大樓請配合體溫量測，倘若出現發燒（耳溫≧38℃）請立即佩戴口罩離校就醫，就醫時請主動告知醫師旅遊史、接觸史等。</p>
+    <p>3. 維持手部清潔，保持經常洗手習慣，原則上可使用肥皂和清水或酒精性乾洗手液進行手部衛生。儘量不要用手直接碰觸眼睛、鼻子和嘴巴。</p>
+    本人所填資料無誤，且已詳細閱讀以上之說明並願意配合防護措施
+</div>
+<div id="save"><button id="savebtn">送出</button></div>
 </body>
 </html>
