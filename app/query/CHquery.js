@@ -409,10 +409,7 @@ function checkAndSave(){
         });
         var answer3Other = $("#answer3Other").val();
         var answer4 = $("input[name='answer4']:checked").val();
-        var screen = [];
-        $("input[name='screen']:checked").each(function(){
-            screen.push($(this).val());
-        });
+
         var fluScreenDate = $("#fluScreenDate").val();
         var fluScreenResult =  $("input[name='fluScreenResult']:checked").val();
         if(fluScreenResult == undefined || fluScreenResult == "other"){
@@ -453,10 +450,9 @@ function checkAndSave(){
               "enteredDate": enteredDate,
               "transitFrom": transitFrom,
               "transitDate": transitDate,
-              "answer3": answer3,
+              "answer3": JSON.stringify(answer3),
               "answer3Other": answer3Other,
               "answer4": answer4,
-              "screen": screen,
               "fluScreenDate": fluScreenDate,
               "fluScreenResult": fluScreenResult,
               "covid19ScreenDate": covid19ScreenDate,
