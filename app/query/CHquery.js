@@ -247,7 +247,7 @@ function ckeckPersonalData(){
     return false;
 }
 
-function checkQueryDate(){
+function checkQueryData(){
     var answer1 = $("input[name='answer1']:checked").val();
     var enteredFrom = $("#enteredFrom").val();
     var transitFrom = $("#transitFrom").val();
@@ -379,10 +379,11 @@ function checkQueryDate(){
             return false;
         }
     }
+    return true;
 }
 
 function checkAndSave(){
-    if(ckeckPersonalData() && checkQueryDate){
+    if(ckeckPersonalData() && checkQueryData()){
         var name = $("#name").val();
         var birthday = $("#birthday").val();
         var sex = $("input[name='sex']:checked").val();
@@ -434,12 +435,12 @@ function checkAndSave(){
         var managementDateStart = $("#managementDateStart").val();
         var managementDateEnd = $("#managementDateEnd").val();
         $.ajax({
-            type: "Post",
+            type: "get",
             url: "https://script.google.com/macros/s/AKfycbyBpoXqaRHkzI-h-JpPvYliPp5K0LvXCyOCpVEyPRmhQd2sE04/exec",
             data: {
               "name": name,
               "birthday": birthday,
-/*            "sex": sex,
+              "sex": sex,
               "invitedUnit": invitedUnit,
               "offCampusUnit": offCampusUnit,
               "event": event,
@@ -468,7 +469,7 @@ function checkAndSave(){
               "managementType": managementType,
               "managementDateStart": managementDateStart,
               "managementDateEnd": managementDateEnd,
-*/
+
             },
             success: function(response) {
                 alert(response);
