@@ -211,7 +211,7 @@ $(document).ready(function () {
 function ckeckPersonalData(){
     var name = $('#name').val();
     var birthday = $('#birthday').val();
-    var sex = $('#sex').val();
+    var sex = $("input[name='sex']:checked").val();
     var invitedUnit = $('#invitedUnit').val();
     var offCampusUnit = $('#offCampusUnit').val();
     var event = $('#event').val();
@@ -219,13 +219,13 @@ function ckeckPersonalData(){
     var evenDateEnd = $('#evenDateEnd').val();
     var phone = $('#phone').val();
     var email = $('#email').val();
-    if(name !== ""){
+    if(name == ""){
         alert("請填入姓名");
     } else if(evenDateStart > evenDateEnd){
         alert("於本校參與活動(公務)期程的結束日期不可早於起始日期");
     } else if(birthday == ""){
         alert("請填入出生日期");
-    } else if(sex == ""){
+    } else if(sex == undefined){
         alert("請填入性別");
     } else if(invitedUnit == ""){
         alert("請填入本校邀請系所/單位");
@@ -383,7 +383,99 @@ function checkQueryDate(){
 
 function checkAndSave(){
     if(ckeckPersonalData() && checkQueryDate){
-        
+        var name = $("#name").val();
+        var birthday = $("#birthday").val();
+        var sex = $("input[name='sex']:checked").val();
+        var invitedUnit = $("#invitedUnit").val();
+        var offCampusUnit = $("#offCampusUnit").val();
+        var event = $("#event").val();
+        var evenDateStart = $("#evenDateStart").val();
+        var evenDateEnd = $("#evenDateEnd").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+
+        var answer1 = $("input[name='answer1']:checked").val();
+        var enteredFrom = $("#enteredFrom").val();
+        var enteredDate = $("#enteredDate").val();
+        var transitFrom = $("#transitFrom").val();
+        var transitDate = $("#transitDate").val();
+
+        var answer3=[];
+        $("input[name='answer3']:checked").each(function(){
+            if($(this).val()!="checkbox9"){
+                answer3.push($(this).val());
+            }
+        });
+        var answer3Other = $("#answer3Other").val();
+        var answer4 = $("input[name='answer4']:checked").val();
+        var screen = [];
+        $("input[name='screen']:checked").each(function(){
+            screen.push($(this).val());
+        });
+        var fluScreenDate = $("#fluScreenDate").val();
+        var fluScreenResult =  $("input[name='fluScreenResult']:checked").val();
+        if(fluScreenResult == undefined || fluScreenResult == "other"){
+            fluScreenResult = $("#fluScreenResultOther").val();
+        }
+        var covid19ScreenDate = $("#covid19ScreenDate").val();
+        var covid19ScreenResult =  $("input[name='covid19ScreenResult']:checked").val();
+        if(covid19ScreenResult == undefined || covid19ScreenResult == "other"){
+            covid19ScreenResult = $("#covid19ScreenResultOther").val();
+        }
+        var hospital = $("#hospital").val();
+        var answer5 = $("input[name='answer5']:checked").val();
+        var relationship = $("#relationship").val();
+        var contactDate = $("#contactDate").val();
+        var answer6 = $("input[name='answer6']:checked").val();
+        var managementType = $("input[name='managementType']:checked").val();
+        if(managementType == undefined){
+            managementType = "";
+        }
+        var managementDateStart = $("#managementDateStart").val();
+        var managementDateEnd = $("#managementDateEnd").val();
+        $.ajax({
+            type: "Post",
+            url: "https://script.google.com/macros/s/AKfycbyBpoXqaRHkzI-h-JpPvYliPp5K0LvXCyOCpVEyPRmhQd2sE04/exec",
+            data: {
+              "name": name,
+              "birthday": birthday,
+/*            "sex": sex,
+              "invitedUnit": invitedUnit,
+              "offCampusUnit": offCampusUnit,
+              "event": event,
+              "evenDateStart": evenDateStart,
+              "evenDateEnd": evenDateEnd,
+              "phone": phone,
+              "email": email,
+              "answer1": answer1,
+              "enteredFrom": enteredFrom,
+              "enteredDate": enteredDate,
+              "transitFrom": transitFrom,
+              "transitDate": transitDate,
+              "answer3": answer3,
+              "answer3Other": answer3Other,
+              "answer4": answer4,
+              "screen": screen,
+              "fluScreenDate": fluScreenDate,
+              "fluScreenResult": fluScreenResult,
+              "covid19ScreenDate": covid19ScreenDate,
+              "covid19ScreenResult": covid19ScreenResult,
+              "hospital": hospital,
+              "answer5": answer5,
+              "relationship": relationship,
+              "contactDate": contactDate,
+              "answer6": answer6,
+              "managementType": managementType,
+              "managementDateStart": managementDateStart,
+              "managementDateEnd": managementDateEnd,
+*/
+            },
+            success: function(response) {
+                alert(response);
+            },
+          });
+
+
     }
 }
 
