@@ -208,6 +208,18 @@ $(document).ready(function () {
 
 });
 
+function showPassImage(date){
+    $("#passImageDate").html(date);
+    $("#mainContent").css("display","none");
+    $("#passImage").css("display","inline");
+    var dateSpilt = date.split("-");
+    $("#passImageDate").html(date);
+    var dt = new Date(parseInt(dateSpilt[0]), parseInt(dateSpilt[1]), parseInt(dateSpilt[2]));
+    var color = ["#00FFFF", "#FF00FF", "#FF0000", "#FF7D00", "#FFFF00", "#00FF00", "#0000FF",  ]
+    $("#passImageDate").css("color",color[dt.getDay()]); 
+
+}
+
 function ckeckPersonalData(){
     var name = $('#name').val();
     var birthday = $('#birthday').val();
@@ -468,7 +480,7 @@ function checkAndSave(){
 
             },
             success: function(response) {
-                alert(response);
+                showPassImage(response);
             },
           });
 
