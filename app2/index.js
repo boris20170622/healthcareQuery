@@ -12,9 +12,7 @@ function showPassImage(date){
     
     $("#passImage").css("display","inline");
 	$("#title").html("國立中正大學校園嚴重特殊傳染性肺炎（武漢肺炎）健康關懷問卷");
-    $("#passImageDate").html(date);
-	$("passImagePicture").attr("src","emblem.png");
-	$("passImagePicture").attr("alt","中正大學校徽");
+	$("#passImageDate").html(date);
 	
 	var dateSpilt = date.split("-");
     var dt = new Date(parseInt(dateSpilt[0]), parseInt(dateSpilt[1]), parseInt(dateSpilt[2]));
