@@ -13,6 +13,7 @@ function showPassImage(date){
     $("#passImage").css("display","inline");
     var dateSpilt = date.split("-");
     $("#passImageDate").html(date);
+	$("#title").html(date);
     var dt = new Date(parseInt(dateSpilt[0]), parseInt(dateSpilt[1]), parseInt(dateSpilt[2]));
     var color = ["#00FFFF", "#FF00FF", "#FF0000", "#FF7D00", "#FFFF00", "#00FF00", "#0000FF",  ]
     $("#passImageDate").css("color","#ffffff"); 
