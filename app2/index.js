@@ -9,13 +9,15 @@ $(document).ready(function () {
 });
 
 function showPassImage(date){
-    $("#passImageDate").html(date);
+    
     $("#passImage").css("display","inline");
-    var dateSpilt = date.split("-");
+	$("#title").html("國立中正大學校園嚴重特殊傳染性肺炎（武漢肺炎）健康關懷問卷");
     $("#passImageDate").html(date);
-	$("#title").html(date);
+	$("passImagePicture").attr("src","emblem.png");
+	$("passImagePicture").attr("alt","中正大學校徽");
+	
+	var dateSpilt = date.split("-");
     var dt = new Date(parseInt(dateSpilt[0]), parseInt(dateSpilt[1]), parseInt(dateSpilt[2]));
     var color = ["#00FFFF", "#FF00FF", "#FF0000", "#FF7D00", "#FFFF00", "#00FF00", "#0000FF",  ]
-    $("#passImageDate").css("color","#ffffff"); 
 	$("body").css("background-color",color[dt.getDay()]); 
 }
