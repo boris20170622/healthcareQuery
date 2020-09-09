@@ -11,7 +11,7 @@ $(document).ready(function () {
 function showPassImage(date){
     
     $("#passImage").css("display","inline");
-	$("#title").html("國立中正大學校園嚴重特殊傳染性肺炎（武漢肺炎）健康關懷問卷");
+	$("#title").html("國立中正大學校園嚴重特殊傳染性肺炎健康關懷問卷");
 	$("#passImageDate").html(date);
 	
 	var dateSpilt = date.split("-");
