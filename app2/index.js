@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	$.ajax({
 		type: "get",
-		url: "https://script.google.com/macros/s/AKfycbxyXp6GmjbLbGhW1f1peUNIzD9qQ3E5hnxK6lQrzhaX0ZNjdU4/exec",
+		url: "https://script.google.com/macros/s/AKfycbzXzE83SaRpF1TcNlefNlCe9tWAlEx8UFqqi5A5LE9hIThbaCE/exec",
 		success: function(response) {
 			showPassImage(response);
 		},
