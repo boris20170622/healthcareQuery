@@ -20,7 +20,7 @@ function showPassImage(date){
 	dateAfter7Days.setDate(dateAfter7Days.getDate() + 6);
 	var dateAfter7DaysString = dateAfter7Days.getFullYear() + "-" + dateAfter7Days.getMonth() + "-" + dateAfter7Days.getDate();
 
-	$("#passImageDate").html(date +"<br/>~<br/>"+ dateAfter7DaysString);
+	$("#passImageDate").html("<br/>"+ date +"<br/>~<br/>"+ dateAfter7DaysString);
 	
 	/*
 	//	底色隨星期變換
