@@ -1,7 +1,7 @@
 #passImage{
     display:none;
     text-align:center;
-	color : #ffffff;
+	color : #0000ff;
 }
 
 #passImagePicture{
@@ -28,4 +28,8 @@ body {
 	-ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
     supported by Chrome, Edge, Opera and Firefox */
+
+    background-image: url('background_image.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
