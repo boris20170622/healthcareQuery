@@ -17,7 +17,7 @@ function showPassImage(date){
 	$("#title").html("嚴重特殊傳染性肺炎健康關懷問卷");
 	var dateSpilt = date.split("-");
 	var dateAfter7Days = new Date(parseInt(dateSpilt[0]), parseInt(dateSpilt[1]), parseInt(dateSpilt[2]));
-	dateAfter7Days.setDate(dateAfter7Days.getDate() + 7);
+	dateAfter7Days.setDate(dateAfter7Days.getDate() + 6);
 	var dateAfter7DaysString = dateAfter7Days.getFullYear() + "-" + dateAfter7Days.getMonth() + "-" + dateAfter7Days.getDate();
 
 	$("#passImageDate").html(date +"<br/>~<br/>"+ dateAfter7DaysString);
