@@ -1,6 +1,4 @@
 $(document).ready(function () {
-	showPassImage("2020-10-19");
-	/*
 	$.ajax({
 		type: "get",
 		url: "https://script.google.com/macros/s/AKfycbzXzE83SaRpF1TcNlefNlCe9tWAlEx8UFqqi5A5LE9hIThbaCE/exec",
@@ -8,7 +6,6 @@ $(document).ready(function () {
 			showPassImage(response);
 		},
 	  });
-	  */
 });
 
 function showPassImage(date){
@@ -20,7 +17,7 @@ function showPassImage(date){
 	dateAfter7Days.setDate(dateAfter7Days.getDate() + 6);
 	var dateAfter7DaysString = dateAfter7Days.getFullYear() + "-" + dateAfter7Days.getMonth() + "-" + dateAfter7Days.getDate();
 
-	$("#passImageDate").html("<br/>"+ date +"<div style='-webkit-transform: rotate(90deg);'>~</div>"+ dateAfter7DaysString);
+	$("#passImageDate").html("<br/>"+ date +"<div style='-webkit-transform: rotate(90deg); -ms-transform:rotate(90deg); -moz-transform:rotate(90deg); -o-transform:rotate(90deg); transform: rotate(90deg);'>~</div>"+ dateAfter7DaysString);
 	
 	/*
 	//	底色隨星期變換
