@@ -1,7 +1,7 @@
 #passImage{
     display:none;
     text-align:center;
-	color : #0000ff;
+	color : rgb(61,102,140);
 }
 
 #passImagePicture{
@@ -13,12 +13,15 @@
 }
 
 #passImageDate{
-    font-size:130px;
+    font-size:100px;
 }
 
 #title{
-    font-size:100px;
-	margin-top: 10%;
+    font-size:80px;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
 
 body {
